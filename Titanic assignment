@@ -1,0 +1,33 @@
+# Titanic Dataset Analysis - Assignment 2
+
+## Project Objective
+[span_0](start_span)The goal of this project is to build a predictive model for Titanic survival through data cleaning, feature engineering, and feature selection[span_0](end_span).
+
+## Approach
+### Part 1: Data Cleaning
+* **[span_1](start_span)Missing Values**: Identified missing values across all columns and applied imputation strategies (median for Age, mode for Embarked)[span_1](end_span).
+* **[span_2](start_span)Outliers**: Detected and capped outliers in the `Fare` and `Age` columns[span_2](end_span).
+* **[span_3](start_span)Consistency**: Fixed inconsistencies in the `Sex` column and removed duplicates[span_3](end_span).
+* **[span_4](start_span)Deliverable**: Cleaned data is stored as `train_cleaned.csv`[span_4](end_span).
+
+### Part 2: Feature Engineering
+[span_5](start_span)I created several derived features to improve model performance[span_5](end_span):
+* **[span_6](start_span)FamilySize**: $SibSp + Parch + 1$[span_6](end_span).
+* **[span_7](start_span)IsAlone**: Binary feature ($1$ if FamilySize is $1$, else $0$)[span_7](end_span).
+* **[span_8](start_span)Title**: Extracted from the `Name` column[span_8](end_span).
+* **[span_9](start_span)Deck**: Extracted from the `Cabin` column[span_9](end_span).
+* **[span_10](start_span)Fare per person**: Calculated as $Fare / FamilySize$[span_10](end_span).
+* **[span_11](start_span)Transformations**: Log transformations were applied to skewed features like `Fare`[span_11](end_span).
+
+### Part 3: Feature Selection
+* **[span_12](start_span)Correlation Analysis**: Removed redundant or highly correlated features[span_12](end_span).
+* **[span_13](start_span)Feature Importance**: Used a Random Forest model to rank and select the most impactful features[span_13](end_span).
+
+## Key Findings
+* Social titles (e.g., 'Mr', 'Mrs') and Deck location were strong predictors of survival.
+* Log transformations on `Fare` helped normalize the data for better model scaling.
+
+## Instructions
+1. Ensure `train.csv` is in the `/data` folder.
+2. Run `notebooks/Titanic_Feature_Engineering.ipynb` for full visualization.
+3. Install dependencies using `pip install -r requirements.txt`.
